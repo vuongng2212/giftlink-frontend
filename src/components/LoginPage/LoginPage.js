@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function LoginPage() {
+function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -16,8 +16,12 @@ function LoginPage() {
       body: JSON.stringify({ username, password }),
     });
     const data = await res.json();
-    if (res.ok) setMessage('Đăng nhập thành công!');
-    else setMessage(data.error || 'Lỗi đăng nhập');
+    if (res.ok) {
+      setMessage('Đăng nhập thành công!');
+      onLogin && onLogin(username);
+    } else {
+      setMessage(data.error || 'Lỗi đăng nhập');
+    }
   };
 
   return (
