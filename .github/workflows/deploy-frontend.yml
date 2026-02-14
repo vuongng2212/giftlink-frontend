@@ -16,6 +16,10 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Set API_URL env for build
+        run: |
+          echo "API_URL=${{ secrets.API_URL }}" > .env
+
       - name: Install frontend dependencies and build
         run: |
           npm ci

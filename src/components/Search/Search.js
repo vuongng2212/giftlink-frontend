@@ -6,7 +6,8 @@ export default function Search({ onResults }) {
   async function submit(e) {
     e && e.preventDefault();
     const q = category.trim();
-    const url = q ? `http://localhost:3000/api/gifts/search?category=${encodeURIComponent(q)}` : 'http://localhost:3000/api/gifts';
+    const API_URL = process.env.API_URL || 'http://localhost:3000';
+    const url = q ? `${API_URL}/api/gifts/search?category=${encodeURIComponent(q)}` : `${API_URL}/api/gifts`;
     const res = await fetch(url);
     const data = await res.json();
     onResults(data, false);

@@ -15,7 +15,8 @@ export default function App() {
 
   // Fetch all gifts
   function fetchAllGifts() {
-    fetch('http://localhost:3000/api/gifts')
+    const API_URL = process.env.API_URL || 'http://localhost:3000';
+    fetch(`${API_URL}/api/gifts`)
       .then(r => r.json())
       .then(setGifts)
       .catch(console.error);

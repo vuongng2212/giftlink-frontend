@@ -7,7 +7,8 @@ function RegisterPage() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:3000/api/auth/register', {
+    const API_URL = process.env.API_URL || 'http://localhost:3000';
+    const res = await fetch(`${API_URL}/api/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
