@@ -2,7 +2,7 @@
 node_modules/
 .parcel-cache/
 dist/
-package-lock.json
+# package-lock.json
 .env
 .vscode/
 .idea/
